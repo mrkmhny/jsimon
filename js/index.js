@@ -29,7 +29,7 @@ function growSeq(){
   
   // update counter on DOM
   if (seq.length<=win){
-    $('#counter').html('Counter: ' + seq.length);
+    $('#counter').html(seq.length);
   }
 }
 
@@ -85,7 +85,7 @@ function checkSeq() {
     // ...otherwise, wait a sec, then play again
     else {
       setTimeout(function(){
-        $('#counter').html('Counter: ' + seq.length);
+        $('#counter').html(seq.length);
         seqTry = [];
         playSeq();
       },1000); 
@@ -111,7 +111,7 @@ function checkSeq() {
 
 // triggers buttons, takes arg c for color id
 $(document).ready(function(){
-  $('#counter').html('Click Restart to Play');
+  $('#counter').html('0');
   // start game when restart button click
   $('#restart').mousedown(function(){
     init();
@@ -122,10 +122,14 @@ $(document).ready(function(){
   $('#mode').on('click', function() {
         if (mode=="easy") {
             mode = 'strict';
-            $('#mode').html("Mode: Strict")
+            $('#mode').html("Strict");
+            $('#mode').toggleClass("hard");
+            $('#mode').toggleClass("easy");
         } else {
             mode = 'easy';
-            $('#mode').html("Mode: Easy")
+            $('#mode').html("Easy");
+            $('#mode').toggleClass("hard");
+            $('#mode').toggleClass("easy");
         }
     });
   
@@ -148,13 +152,37 @@ $(document).ready(function(){
   });
 })
 
+// trigger button down
 function buttonDown(c){
   $(c).addClass("pressed"); 
   var beep = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound'+BUTTON_NUM[$(c).attr('id')]+'.mp3');
   beep.play();
 }
 
+// trigger button up
 function buttonUp(c){
   $(c).removeClass("pressed");
-  
 }
+
+
+// restart button animations
+setInterval(function(){
+  $("#divtoBlink").toggleClass(".highlighted");
+},500)
+
+
+function pulse(){
+  $('#restart').delay(200).fadeOut('slow').delay(50).fadeIn('slow',pulse);
+};
+
+$( document ).ready(function() {
+    $('#restart').animate
+});
+
+$("#restart").click(function () {
+      $(this).removeClass("blink_me");
+});
+
+$('#restart').click(function(){
+  ('#restart').stop();
+});
