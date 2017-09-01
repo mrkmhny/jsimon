@@ -1,20 +1,101 @@
 body {
-  background:lightgoldenrodyellow;
+  background:white;
   font-family:sans-serif;
   text-transform:uppercase;
-  text-align:center;
 }
 
-button{
-  width:100px;
-  height:20px;
+.container{
+  min-width:500px;
+  position:relative;
+  background-color:blue;
+  display:flex;
+  justify-content:center;
+}
+
+.switches {
+  position:relative;
+  z-index:2;
+  width:15%;
+  margin-top:27%;
+  margin-bottom:25%;
+  position:absolute;
+  display:flex;
+  justify-content:space-around;
+}
+
+#mode{
+  border-radius:10px;
+  color:white;
+}
+
+.hard {
+  background-color:red;
+  border-radius:100%;
+}
+
+.easy {
+  background-color:green;;
+  border-radius:100%;
+}
+
+#counter{
+  position:absolute;
+  padding-top:16%;
+  font-size:.75em;
+  color:white;
+  z-index:2;
+}
+
+.switch {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.label {
+  font-size:.3em;
+  color:white;
+}
+
+#restart {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color:red ;
+}
+
+
+.highlighted {
+  background:yellow;
+}
+
+.hardware {
+  //display:none;
+  width:50%;
+  z-index:1;
+  position:absolute;
+  pointer-events:none;
+  
+}
+
+.buttons {
+  width:50%;
+  position:absolute;
+  background-color:grey;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.row {
+  display:flex;
+  justify-content:center;
 }
 
 .color {
-  width: 100px;
-  height: 100px;
-  margin-top: 3px;
-  border-radius:10px;
+  width:49%;
+  padding-bottom:49%;
+  border:none;
 }
 
 button:focus {
@@ -51,5 +132,21 @@ button:focus {
 
 #y.pressed {
   background-color: orange;
+}
+
+
+
+
+.blink_me {
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blinker {  
+    0% {background-color: red;}
+    50% {background-color: yellow;}
+    100% {background-color: red;}
 }
 
